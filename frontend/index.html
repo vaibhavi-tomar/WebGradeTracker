@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grade Ledger</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="masthead">
+    <div class="masthead-inner">
+      <span class="eyebrow">Register &middot; Ledger &middot; Report</span>
+      <h1>The Grade Ledger</h1>
+      <p class="subtitle">Every mark, entered once, tallied automatically.</p>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- REGISTER: add a new student -->
+    <section class="panel" id="register-panel">
+      <h2><span class="panel-index">I.</span> Register a Student</h2>
+      <form id="student-form">
+        <div class="field-row">
+          <label for="name">Student name</label>
+          <input type="text" id="name" placeholder="e.g. Ananya Sharma" required>
+        </div>
+        <div class="field-row">
+          <label for="roll">Roll number</label>
+          <input type="number" id="roll" placeholder="e.g. 101" required>
+        </div>
+        <div class="field-row">
+          <label for="marks">Marks <span class="hint">(comma-separated, 0&ndash;100)</span></label>
+          <input type="text" id="marks" placeholder="e.g. 88, 92, 76, 81" required>
+        </div>
+        <button type="submit" class="btn-primary">Add to ledger</button>
+        <p class="form-message" id="form-message"></p>
+      </form>
+    </section>
+
+    <!-- LEDGER: table of all students -->
+    <section class="panel" id="ledger-panel">
+      <h2><span class="panel-index">II.</span> The Ledger</h2>
+      <div class="table-wrap">
+        <table id="students-table">
+          <thead>
+            <tr>
+              <th>Roll</th>
+              <th>Name</th>
+              <th>Average</th>
+              <th>Highest</th>
+              <th>Lowest</th>
+              <th>Grade</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="students-tbody">
+            <tr><td colspan="7" class="empty-row">No entries yet. Register a student above.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- REPORT: class summary -->
+    <section class="panel" id="report-panel">
+      <h2><span class="panel-index">III.</span> Class Report</h2>
+      <div id="report-empty" class="empty-row">Add students to generate a report.</div>
+
+      <div id="report-content" class="report-content hidden">
+        <div class="stat-row">
+          <div class="stat-card">
+            <span class="stat-label">Total students</span>
+            <span class="stat-value" id="stat-total">&mdash;</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Class average</span>
+            <span class="stat-value" id="stat-average">&mdash;</span>
+          </div>
+        </div>
+
+        <div class="badge-row">
+          <div class="badge-card badge-topper">
+            <span class="ribbon">Topper</span>
+            <span class="badge-name" id="topper-name">&mdash;</span>
+            <span class="badge-average" id="topper-average">&mdash;</span>
+          </div>
+          <div class="badge-card badge-weakest">
+            <span class="ribbon">Needs Attention</span>
+            <span class="badge-name" id="weakest-name">&mdash;</span>
+            <span class="badge-average" id="weakest-average">&mdash;</span>
+          </div>
+        </div>
+
+        <h3>Ranking</h3>
+        <ol id="ranking-list" class="ranking-list"></ol>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Backend: Java (built-in HttpServer) &middot; Frontend: HTML / CSS / JavaScript</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
